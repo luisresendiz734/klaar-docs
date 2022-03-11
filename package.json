@@ -1,7 +1,7 @@
 {
-  "name": "nextra",
+  "name": "klaar-docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Klaar documentation system",
   "main": "index.js",
   "scripts": {
     "dev": "next",

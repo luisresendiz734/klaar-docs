@@ -1,7 +1,7 @@
 {
-  "index": "Introduction",
-  "get-started": "Get Started",
-  "features": "Features",
-  "themes": "Themes",
-  "advanced": "Advanced"
+  "index": "Introduction al proyecto",
+  "get-started": "Comienzo rapido",
+  "database": "Base de datos",
+  "frontend": "Front-end",
+  "backend": "Back-end"
 }
