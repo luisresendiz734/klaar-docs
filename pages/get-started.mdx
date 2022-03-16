@@ -1,11 +1,61 @@
+import Callout from 'nextra-theme-docs/callout'
+
 # Comienzo rapido
 
 ## Pre Requisitos
 
-- Node.js
-- Git
-- VPN
+- [Node.js](https://nodejs.org/es/)
+- [Git](https://git-scm.com/)
+- [Sophos VPN](https://201.161.7.10:4443/userportal/webpages/myaccount/login.jsp)
 
 ## Descarga e instalacion del backend
 
 ## Descarga e instalacion del frontend
+
+0. Asegura que tienes instalado node y npm:
+
+```bash
+node -v
+npm -v
+```
+
+1. Instala yarn de forma global:
+
+```bash
+npm install yarn -g
+```
+
+2. El repositorio del sistema se encuentra en el git de la empresa, podemos
+   acceder <a href="http://git.ezetera.com:5000/root/klaar2">aqui</a>.
+
+3. Para clonar el repositorio es necesario **NO** estar conectado a la VPN de la empresa, se hace a traves del comando:
+
+```bash
+git clone http://git.ezetera.com:5000/git/root/klaar2.git
+```
+
+Te pedira usuario y contrasena, los cuales fueron proporcionados por la empresa.
+
+4. Una vez clonado, entrar a la carpeta raiz del proyecto e instalar los modulos necesarios:
+
+```bash
+cd klaar2
+yarn
+```
+
+<Callout emoji="⚠">
+  Es necesario utilizar **yarn** para evitar conflictos con los modulos
+  actuales.
+</Callout>
+
+5. Para iniciar la aplicacion en modo desarrollo es necesario estar conectado a la VPN de la empresa y el backend ya debe estar corriendo. Posteriormente iniciamos el proyecto con el comando:
+
+```bash
+yarn start
+```
+
+<Callout emoji="⚠">Para instalar modulos nuevos utilizamos yarn.</Callout>
+
+## Postman GEA Core Team
+
+Para tener una mejor comunicacion entre backend y frontend se ha creado un team en [Postman](https://app.getpostman.com/join-team?invite_code=ebafef804c8c1c150cd3b07556c84b49), aqui se testean las rutas hechas por el backend antes de ser consumidas por el frontend.
