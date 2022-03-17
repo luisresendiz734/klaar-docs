@@ -1,7 +1,131 @@
+import Callout from 'nextra-theme-docs/callout'
+
 # Frontend
+
+Este proyecto tiene como objetivo darle mayor agilidad a los procesos internos de la empresa mediante soluciones modernas.
+
+El proyecto esta hecho en JavaScript, especificamente utilizando como framework para crear interfaces graficas [React](https://es.reactjs.org/), utiliza el framework css [MUI](https://mui.com/) para los componentes visuales apegados al patron de diseno de Google.
 
 ## Requisitos
 
+- [Node.js](https://nodejs.org/es/)
+- [Git](https://git-scm.com/)
+- [Sophos VPN](https://201.161.7.10:4443/userportal/webpages/myaccount/login.jsp)
+
+0. Asegura que tienes instalado node y npm:
+
+```bash
+node -v
+npm -v
+```
+
+1. Instala yarn de forma global:
+
+```bash
+npm install yarn -g
+```
+
 ## Instalacion
 
+2. El repositorio del sistema se encuentra en el git de la empresa, podemos
+   acceder <a href="http://git.ezetera.com:5000/root/klaar2">aqui</a>.
+
+3. Para clonar el repositorio es necesario **NO** estar conectado a la VPN de la empresa, se hace a traves del comando:
+
+```bash
+git clone http://git.ezetera.com:5000/git/root/klaar2.git
+```
+
+Te pedira usuario y contrasena, los cuales fueron proporcionados por la empresa.
+
+4. Una vez clonado, entrar a la carpeta raiz del proyecto e instalar los modulos necesarios:
+
+```bash
+cd klaar2
+yarn
+```
+
+<Callout emoji="⚠">
+  Es necesario utilizar **yarn** para evitar conflictos con los modulos
+  actuales.
+</Callout>
+
+5. Para iniciar la aplicacion en modo desarrollo es necesario estar conectado a la VPN de la empresa y el backend ya debe estar corriendo. Posteriormente iniciamos el proyecto con el comando:
+
+```bash
+yarn start
+```
+
+<Callout emoji="⚠">Para instalar modulos nuevos utilizamos yarn.</Callout>
+
 ## Estructura
+
+El proyecto tiene una estructura clasica de React, inicialmente cuenta con dos carpetas:
+
+- **public:** la cual contiene un unico archivo `index.html` con la configuracion basica.
+- **src:** la cual contiene todo el codigo fuente de la aplicacion.
+
+### src
+
+En esta carpeta contiene todo el cigo fuente que construye la aplicacion, aqui estaremos la mayor parte de nuestro tiempo.
+A continuacion se describe el contenido de esta carpeta.
+
+#### components
+
+Esta carpeta contiene todos los componentes necesarios para mostrar datos o informacion dentro de la aplicacion, estos componentes estan ordenados en sub-carpetas, cada sub-carpeta representa un modulo dentro de la aplicacion, es decir, la carpeta `crm` corresponde al modulo crm, la carpeta `trazabilidad` corresponde al modulo trazabilidad, y asi sucesivamente. Si un modulo contiene sub-modulos internamente, tambien se tienen que crear sus sub-carpetas de componentes correspondientes, esto con el fin de mantener un orden y encontrar de manera sencilla los componentes.
+
+<Callout emoji="⚠">
+  Todos los componentes deben tener terminacion **.jsx** y comenzar con una
+  letra mayuscula.
+</Callout>
+
+#### context
+
+Esta carpeta contiene los contextos de la aplicacion, cada contexto debe cumplir con lo siguiente:
+
+- **Componentes necesarios:** dentro de la definicion del contexto se debe crear su Proveedor y su Hook correspondiente.
+- **Nombre descriptivo:** si el estado que queremos compartir se llama queso 🧀, su contexto debe llamarse QuesoContext, su proveedor debe llamarse QuesoProvider y su hook debe llamarse useQueso.
+- **Proveedor inteligente:** dentro del proveedor se debe crear toda la logica necesaria para modificar el estado, es decir, las funciones que tendran como objetivo modificar el estado que estamos compartiendo. Eres libre de ocupar useState o useReducer.
+
+#### modules
+
+Esta carpeta contiene las modulos principales de la aplicacion, si un modulo contiene sub-modulos internamente, se necesita crear un router nuevo en el mdulo principal. estas rutas tambien se deben agregar al menu principal de la aplicacion (Dashboard).
+
+#### routes
+
+Esta carpeta incluye las rutas de la aplicacion, para ello se utiliza API de [Reach router](https://reach.tech/router/).
+
+#### services
+
+Esta carpeta contiene las implementaciones de los servicios externos a GEA, por ejemplo el servicio de [Firebase](https://firebase.google.com/), el cual estamos utilizando para la autenticacion de usuarios.
+
+Aqui dentro se pueden implementar otros micro-servicios, pasarelas de pago, etc.
+
+<Callout emoji="⚠">
+  Cualquier informacion sensible como credenciales, direcciones o tokens debe
+  manejase utilizando variables de entorno.
+</Callout>
+
+#### theme
+
+Esta carpeta contiene la confiuracion del tema actual de Klaar v2, la cual esta documentada en la [API de Material UI](https://mui.com/customization/theming/)
+
+#### utils
+
+Esta carpeta contiene unicamente logica en JavaScript que contiene procesos pesados, los cuales alentarian el renderizado de nuestros componentes si la implementaramos ahi mismo.
+
+Esta dividida en sub-carpetas, cada una de ellas representa un modulo, indicando que ai se encuentran funciones o procesos relacionados a ese modulo.
+
+<Callout emoji="⚠">
+  En cada archivo unicamente se exportan las funciones que se van a utilizar.
+</Callout>
+
+## .env
+
+Este archivo, es probablemente uno de los mas importantes del proyecto, ya que aqui estaran todas las variables de entorno que contengan informacion sensible que comprometa la seguridad de los datos.
+
+<Callout emoji="⛔" type="error">
+  Este archivo no debe subirse al repositorio, debe de estar alojado de forma
+  local unicamente. Cuando se quiera llevar a produccion, el administrador del
+  servidor debe configurar dichas variables antes de desplegar el proyecto.
+</Callout>
