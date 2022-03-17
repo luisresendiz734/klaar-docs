@@ -1,7 +1,84 @@
+import Callout from 'nextra-theme-docs/callout'
+
 # Backend
+
+Este proyecto tiene como objetivo aumentar la eficiencia de los procesos internos de la empresa mediante el uso de soluciones modernas.
+
+El proyecto esta hecho en JavaScript, utlizando como entorno de ejecución [NodeJs](https://nodejs.org/es/).
 
 ## Requisitos
 
+- [Node.js](https://nodejs.org/es/)
+- [Git](https://git-scm.com/)
+- [Sophos VPN](https://201.161.7.10:4443/userportal/webpages/myaccount/login.jsp)
+
+0. Asegura que tienes instalado node y npm:
+
+```bash
+node -v
+npm -v
+```
+
 ## Instalacion
 
+1. El repositorio del sistema se encuentra en el git de la empresa, podemos
+   acceder <a href="http://git.ezetera.com:5000/root/nodejs">aqui</a>.
+
+2. Para clonar el repositorio es necesario **NO** estar conectado a la VPN de la empresa, se hace a traves del comando:
+
+```bash
+git clone http://git.ezetera.com:5000/git/root/nodejs.git
+```
+
+Te pedira usuario y contrasena, los cuales fueron previamente proporcionados por la empresa.
+
+3. Una vez clonado, debes entrar a la carpeta raiz del proyecto e instalar los modulos necesarios:
+
+```bash
+cd nodeKlaar
+npm install
+```
+
+<Callout emoji="⚠">
+  Es necesario realizar la instalación de módulos para poder comenzar a usar el proyecto.
+</Callout>
+
+4. Para iniciar la aplicacion en modo desarrollo es necesario estar conectado a la VPN de la empresa. Posteriormente iniciamos el proyecto con el comando:
+
+```bash
+npm run dev
+```
+
+<Callout emoji="⚠">Para instalar modulos nuevos utilizamos npm install.</Callout>
+
 ## Estructura
+
+El proyecto tiene una estructura de ES6+ Javascript, inicialmente cuenta con dos carpetas:
+
+- **documents:** la cual es para uso en pruebas exclusivamente, cuando se realicen pruebas de crear archivos, los archivos de prueba se deben almacenar ahí y posteriormente, eliminarse.
+- **src:** la cual contiene todo el codigo fuente de la aplicacion.
+
+### src
+
+En esta carpeta contiene todo el código fuente que construye la aplicación, aquí estaremos la mayor parte de nuestro tiempo.
+A continuación se describe el contenido de esta carpeta.
+
+#### modules
+
+Esta carpeta contiene las módulos que contienen toda la funcionalidad de la aplicación, cada uno con su nombre distintivo. Dentro de cada módulo, se encuentran dos archivos:
+
+- **controller:** dentro de este archivo, se encuentran los métodos que brindan toda la funcionalidad de las distintas rutas.
+- **router:** en este archivo, se definen las rutas que serán solicitadas por el Frontend para realizar las peticiones. Para crear una ruta, se mantiene el estándar del uso de nombres en inglés, en cuanto a la construcción de la ruta, se define una palabra que cubra de manera general a qué grupo de funciones pertenece, después se le asigna un nombre que defina la funcionalidad que tendrá esta ruta.
+
+#### services
+
+Esta carpeta contiene las implementaciones de los servicios que se utilizarán en el proyecto. Por el momento, contiene lo siguiente:
+- **database:** en esta carpeta están almacenan los archivos que contienen las conexiones a las Bases de Datos de la empresa.
+
+#### utils
+
+Esta carpeta contiene datos o funciones que podrían ser utilizados repetidamente en distintos módulos, por lo que tenerlos aquí, facilita su uso y nos evita repetir código.
+
+<Callout emoji="⚠">
+  En cada archivo unicamente se exportan las funciones o los datos que se van a utilizar.
+</Callout>
