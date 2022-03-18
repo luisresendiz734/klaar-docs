@@ -10,6 +10,43 @@ import Callout from 'nextra-theme-docs/callout'
 
 ## Descarga e instalacion del backend
 
+0. Asegura que tienes instalado node y npm:
+
+```bash
+node -v
+npm -v
+```
+
+1. El repositorio del sistema se encuentra en el git de la empresa, podemos
+   acceder <a href="http://git.ezetera.com:5000/root/nodejs">aqui</a>.
+
+2. Para clonar el repositorio es necesario **NO** estar conectado a la VPN de la empresa, se hace a traves del comando:
+
+```bash
+git clone http://git.ezetera.com:5000/git/root/nodejs.git
+```
+
+Te pedira usuario y contrasena, los cuales fueron proporcionados previamente por la empresa.
+
+3. Una vez clonado, debes entrar a la carpeta raiz del proyecto e instalar los modulos necesarios:
+
+```bash
+cd nodeKlaar
+npm install
+```
+
+<Callout emoji="⚠">
+  Es necesario realizar la instalación de módulos para poder comenzar a usar el proyecto.
+</Callout>
+
+4. Para iniciar la aplicacion en modo desarrollo es necesario estar conectado a la VPN de la empresa. Posteriormente iniciamos el proyecto con el comando:
+
+```bash
+npm run dev
+```
+
+<Callout emoji="⚠">Para instalar modulos nuevos utilizamos npm install.</Callout>
+
 ## Descarga e instalacion del frontend
 
 0. Asegura que tienes instalado node y npm:
